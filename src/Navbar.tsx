@@ -1,8 +1,12 @@
 import { FaCartPlus } from "react-icons/fa";
 import { IoSearchSharp } from "react-icons/io5";
 import logo from './assets/img/nav-logo.png';
+import type { IPopularProduct } from "./components";
 
-const Navbar = () => {
+interface NavbarProps {
+  cart: IPopularProduct[];
+}
+const Navbar = ({cart}:NavbarProps) => {
     return (
         <div className="border-b border-gray-300">
             <nav className="flex justify-between gap-4 container mx-auto py-4 ">
@@ -29,7 +33,7 @@ const Navbar = () => {
 
 
                 <span className="bg-[#179800] text-white px-2 py-1 rounded-full text-sm">
-                    
+                    {cart.length}
                 </span>
 
                 <button className="bg-blue-500 text-white px-6 text-xl  py-2 rounded-md hover:bg-blue-600 hover:text-orange-500 hover:scale-110 transition-transform duration-300">

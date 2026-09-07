@@ -1,10 +1,11 @@
 import type { IPopularProduct } from "../index";
 interface popularProductCardProps {
-  product:IPopularProduct;  
+  product:IPopularProduct,
+  handelAddToCart :(product: IPopularProduct) => void;
 }
- 
 
-const PopularProductCard = ({product}:popularProductCardProps) => {
+
+const PopularProductCard = ({product, handelAddToCart}:popularProductCardProps) => {
     const {productImg, title, price, rating} = product
     return (
       <div className="border border-green-500 p-4 rounded-lg shadow-sm">
@@ -14,7 +15,7 @@ const PopularProductCard = ({product}:popularProductCardProps) => {
       <div className="flex">
         <span className="text-yellow-500">Rating: {rating}</span>
       </div>
-      <button className="bg-green-500 text-white px-6 py-2 my-2 rounded-md hover:bg-green-600"> Add To Cart</button>
+      <button onClick={()=>handelAddToCart(product)} className="bg-green-500 text-white px-6 py-2 my-2 rounded-md hover:bg-green-600"> Add To Cart</button>
     </div>
     );
 };

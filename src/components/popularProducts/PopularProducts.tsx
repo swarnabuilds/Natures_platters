@@ -1,14 +1,18 @@
  
-import { use } from 'react';
+import { use, useState } from 'react';
 import popular from '../../assets/img/popular.png'
 import PopularProductCard from '../popularProductCard/PopularProductCard';
 import type { IPopularProduct } from '../index';
 
-interface IPopularProductPromise {
+interface IPopularProductProps {
 popularProductPromise: Promise<IPopularProduct[]>
+handelAddToCart:(product:IPopularProduct)=>void
 }
-const PopularProducts = ({popularProductPromise}:IPopularProductPromise) => {
-    const data = use(popularProductPromise)
+const PopularProducts = ({popularProductPromise, handelAddToCart}:IPopularProductProps) => {
+const data = use(popularProductPromise)
+
+    
+
     return (
     <div className="my-[80px] container mx-auto">
       <h2 className="text-3xl font-bold mb-6 text-[#179800]">
@@ -36,7 +40,10 @@ const PopularProducts = ({popularProductPromise}:IPopularProductPromise) => {
 
           <div className="grid grid-cols-3 gap-4">
             {
-                data.map(product => <PopularProductCard key={product.title} product={product}></PopularProductCard>)
+                data.map(product => <PopularProductCard key={product.title} 
+                    product={product}
+                    handelAddToCart={handelAddToCart}
+                    ></PopularProductCard>)
             }
           </div>
         </div>
