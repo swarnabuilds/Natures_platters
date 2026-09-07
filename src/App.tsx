@@ -4,6 +4,7 @@ import Banner from "./components/Banner/Banner";
 import Services from "./components/services/Services";
 import PopularProducts from "./components/popularProducts/PopularProducts";
 import type { IPopularProduct } from './components'
+import { ToastContainer, toast, Bounce } from 'react-toastify';
 
 
 const popularProductPromise = async():Promise<IPopularProduct[]> =>{
@@ -18,6 +19,18 @@ const App = () => {
  const [cart, setCart]= useState<IPopularProduct[]>([]);
  const handelAddToCart = (product:IPopularProduct) =>{
         setCart([...cart, product]);
+        //toast code
+    toast.success(`Added ${product.title} to cart!`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
     }
     return (
         <div>
@@ -30,6 +43,8 @@ const App = () => {
                     handelAddToCart={handelAddToCart}
                     ></PopularProducts>
             </Suspense>
+    <ToastContainer />
+
         </div>
     );
 };
