@@ -5,6 +5,7 @@ import Services from "./components/services/Services";
 import PopularProducts from "./components/popularProducts/PopularProducts";
 import type { IPopularProduct } from './components'
 import { ToastContainer, toast, Bounce } from 'react-toastify';
+import Cart from "./components/Cart/Cart";
 
 
 const popularProductPromise = async():Promise<IPopularProduct[]> =>{
@@ -32,12 +33,22 @@ const App = () => {
       transition: Bounce,
     });
     }
+
+    //remove cart
+     const handelRemoveCart = (title:string) =>{
+        const updatedCart = cart.filter(item=> item.title !== title);
+        setCart(updatedCart);
+        toast.error("Removed from cart!");
+     }
+
+    
     return (
         <div>
+            <Navbar cart={cart}></Navbar>
+            <Banner></Banner>
+            <Services></Services>
+            <Cart cart={cart} handelRemoveCart={handelRemoveCart}></Cart>
             <Suspense fallback={<div>Loading products...</div>}>
-                    <Navbar cart={cart}></Navbar>
-                    <Banner></Banner>
-                    <Services></Services>
                     <PopularProducts
                     popularProductPromise={popularProductPromise()}
                     handelAddToCart={handelAddToCart}

@@ -22,8 +22,9 @@ const data = use(popularProductPromise)
       <div className="grid grid-cols-12 gap-8">
         {/* 30% */}
 
-        <div className="relative h-[300px] z-10 pr-24 col-span-4 rounded-md shadow-2xl p-6  bg-gradient-to-r from-[#179800] to-[#6d7b6a]">
-          <h2 className="font-bold text-2xl">30% discount</h2>
+        <div className="relative md:h-[1000px] z-10 pr-24 col-span-4 rounded-md shadow-2xl p-6  bg-gradient-to-r from-[#179800] to-[#6d7b6a]">
+          <div className='absolute top-1/3'>
+            <h2 className="font-bold text-2xl">30% discount</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -31,7 +32,9 @@ const data = use(popularProductPromise)
           <button className="bg-white text-[#179800] font-bold py-2 px-4 my-4 rounded-md hover:bg-gray-200">
             Buy Now
           </button>
-          <img className='absolute bottom-0 right-0 z-0 w-auto h-[200px]' src={popular} alt="" />
+         
+          </div>
+           <img className='absolute bottom-0 right-0 z-0 w-auto' src={popular} alt="" />
         </div>
 
         {/* 70% */}
