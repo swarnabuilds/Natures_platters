@@ -6,6 +6,7 @@ import PopularProducts from "./components/popularProducts/PopularProducts";
 import type { IPopularProduct } from './components'
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import Cart from "./components/Cart/Cart";
+import Footer from "./components/Footer/Footer";
 
 
 const popularProductPromise = async():Promise<IPopularProduct[]> =>{
@@ -54,6 +55,8 @@ const App = () => {
                     handelAddToCart={handelAddToCart}
                     ></PopularProducts>
             </Suspense>
+            <Footer></Footer>
+
     <ToastContainer />
 
         </div>
